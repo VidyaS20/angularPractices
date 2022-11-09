@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="card col-md-4 col-sm-3" *ngFor="let pizza of pizzas">
+          <img src="{{ pizza.img }}" class="card-img-top" style="width: 15rem; height: 10rem" />
+          <div class="card-body">
+            <h5 class="card-title">{{ pizza.title }}</h5>
+            <p class="card-text">{{ pizza.description }}</p>
+            <button class="btn btn-primary" (click)="onAddtoCart(pizza)">
+              AddToCart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <app-child *ngIf="pizzaData" [selectedPizza]="pizzaData" (checkedOutData)="checkoutdataReceived($event)">
+        </app-child>
+        <div class="row" *ngIf="!pizzaData">
+          <div class="card" style="width: 18rem">
+            <img src="../../assets/cartempty.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">YOUR CART IS EMPTY.</h5>
+              <p class="card-text">please add some items from the menu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="codata">
+        <h3>hi {{codata.title}} is checkedout successfully..</h3>
+      </div>
+    </div>
+  </div>
+</div>
