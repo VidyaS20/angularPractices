@@ -48,7 +48,6 @@ export class BestsellerComponent implements OnInit {
   pizzaData:any;
 
   onAddtoCart(data:any){
-    console.log('pizza data received',data)
     this.pizzaData=data
 
   }
